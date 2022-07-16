@@ -3,6 +3,7 @@ html {
   /* font-size: 16px; */
   font-family: sans-serif;
   padding: 20px;
+  background-color: azure;
 }
 
 *, *:before, *:after {
