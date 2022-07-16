@@ -6,6 +6,7 @@ import { useContext } from 'react';
 import Context from '../contexts/Context';
 import { useEffect } from 'react';
 import { getStatusNumber } from '../service/NumberRaffle';
+import prisma from '../lib/prisma'
 
 export default function Home({numbers}) {
   const { setStatusNumbersBuyer } = useContext(Context);
@@ -18,7 +19,7 @@ export default function Home({numbers}) {
     setNumbersAndStates();
   },[numbers, setStatusNumbersBuyer])
   return (
-    <div>  
+    <div>
       <Header />
       <main>
         <User />
@@ -38,9 +39,16 @@ export default function Home({numbers}) {
 // }
 
 export const getServerSideProps = async () => {
-  const numbers = await getStatusNumber();
-  return {
-    props: { numbers },
+  try {
+    const numbers = await prisma.number.findMany({})
+    return {
+      props: { numbers },
+    }
+  } catch (error) {
+    console.log(error);
+    const numbers = []
+    return {
+      props: { numbers },
+    }
   }
 }
-

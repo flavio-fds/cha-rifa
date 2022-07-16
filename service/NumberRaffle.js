@@ -1,6 +1,6 @@
 export const getNumberBuyerUser = async (dataUser) => {
   try {
-    const res = await fetch(`http://localhost:3000/api/number/${dataUser.numberPhone}`)
+    const res = await fetch(`/api/number/${dataUser.numberPhone}`)
     const data = await res.json()
     return data
   } catch (error) {
