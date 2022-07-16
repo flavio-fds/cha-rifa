@@ -159,3 +159,26 @@
   font-weight: bold;
 }
 
+.test {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  /* min-height: 10px; */
+  /* transform: scale(5); */
+}
+
+.loader {
+  animation: is-rotating 1s infinite;
+  border: 5px solid #e5e5e5;
+  border-radius: 50%;
+  border-top-color: rgb(0, 108, 72);
+  height: 30px;
+  width: 30px;
+}
+
+@keyframes is-rotating {
+  to {
+    transform: rotate(1turn);
+  }
+}
+

@@ -10,6 +10,7 @@ export default function User() {
   const [confirmNameDataUser, setConfirmNameDataUser] = useState(false);
   const [inputRegister, setInputRegister] = useState(true);
   const [dataGetDataUser, setDataGetDataUser] = useState([]);
+  const [loading, setLoading] = useState(false);
   const { statusRegister, setStatusRegister, userRegistered, setUserRegistered } = useContext(Context);
 
   // function phoneMask(number) {
@@ -33,6 +34,8 @@ export default function User() {
     const arrayNumberBuyerUser = numberBuyerUser.length > 0 ? numberBuyerUser.map(e => e.number) : [];
     setUserRegistered({ ...data[0], bay: arrayNumberBuyerUser });
     setStatusRegister(true);
+    setLoading(false); 
+
   }
 
   const confirmRegister = () => {
@@ -54,6 +57,7 @@ export default function User() {
   }
 
   const register = async () => {
+    setLoading(true);
     setConfirmRegistrationData(false)
     const data = await getDataUser(userInput);
     if (data) {
@@ -65,6 +69,7 @@ export default function User() {
           setDataGetDataUser(data);
           setConfirmNameDataUser(true);
           setInputRegister(false);
+          setLoading(false); 
         }
 
       } else if (data.length === 0 && typeof data === 'object') {
@@ -73,16 +78,31 @@ export default function User() {
           const newData = await getDataUser(userInput);
           if (newData) {
             startUserRegistered(newData);
+          } else {
+            setLoading(false); 
           }
-        } else { global.alert('Tente novamente!!!') }
-      } else { global.alert('Tente novamente!!!') }
-
-    } else { global.alert('Tente novamente!!!') }
+        } else {
+          setLoading(false); 
+          global.alert('Tente novamente!!!') 
+        }
+      } else {
+        setLoading(false); 
+        global.alert('Tente novamente!!!') 
+      }
+    } else {
+      setLoading(false); 
+      global.alert('Tente novamente!!!') 
+    }
   }
 
   return (
     <>
       <hr />
+      {loading && (
+        <div className={styles.test}>
+          <div className={styles.loader}></div>
+        </div>
+      )}
       {inputRegister
         && (<div className={styles.forms}>
           <input
@@ -118,10 +138,13 @@ export default function User() {
             <p>{`Você já comprou os numeros:`}</p>
           </div>
 
-          {userRegistered.bay.length > 0 ? 
+          {userRegistered.bay.length > 0 ?
             <div className={styles.numberUserBuyer}>
-            {userRegistered.bay.map(n => (<div key={n}>{n}</div>))}
-            </div> : <div className={styles.numberUserBuyer}><div></div><div></div><div></div><div></div></div>
+              {userRegistered.bay.map(n => (<div key={n}>{n}</div>))}
+            </div>
+            : <div className={styles.numberUserBuyer}>
+              <div></div><div></div><div></div><div></div>
+            </div>
           }
         </div>
         )}

@@ -9,14 +9,17 @@ import { getStatusNumber } from '../service/NumberRaffle';
 import prisma from '../lib/prisma'
 
 export default function Home({numbers}) {
-  const { setStatusNumbersBuyer } = useContext(Context);
+  const { setStatusNumbersBuyer} = useContext(Context);
 
   useEffect(()=> {
     const setNumbersAndStates = () => {
       const newArrayNumber = numbers.map( ({number, status }) => ({number, status}));
       setStatusNumbersBuyer(newArrayNumber);
     }
-    setNumbersAndStates();
+    const ReloadRaffle = () => {
+      console.log('Recarregue a pagina');
+    }
+    numbers ? setNumbersAndStates() : ReloadRaffle();
   },[numbers, setStatusNumbersBuyer])
   return (
     <div>
@@ -49,7 +52,7 @@ export const getServerSideProps = async () => {
     }
   } catch (error) {
     console.log(error);
-    const numbers = []
+    const numbers = false
     return {
       props: { numbers },
     }

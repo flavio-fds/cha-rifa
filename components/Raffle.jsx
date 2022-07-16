@@ -5,6 +5,7 @@ import { getDataUser } from '../service/DataUser';
 import { getNumberBuyerUser, postNumberBuyerUser, getStatusNumber } from '../service/NumberRaffle';
 
 export default function Raffle() {
+  const [loading, setLoading] = useState(false);
   const { selectedNumber, setSelectedNumber, statusNumbersBuyer, raffleNumber,
     statusRegister, userRegistered, setStatusNumbersBuyer, setUserRegistered } = useContext(Context);
 
@@ -23,7 +24,7 @@ export default function Raffle() {
     const checkNumberSelected = selectedNumber.length > 0;
     const checkRegister = statusRegister;
     if (checkNumberSelected && checkRegister) {
-
+      setLoading(true);
       const numbers = await getStatusNumber();
       if (numbers) {
         const checkNumberBuyer = selectedNumber.filter(n => numbers.some(({ number }) => +number === +n));
@@ -37,8 +38,6 @@ export default function Raffle() {
             !resultBuyer && resultResponse.push(selectedNumber[index]);
           }
 
-          console.log('entrei');
-
           const updatedNumbers = await getStatusNumber();
           updatedNumbers && setStatusNumbersBuyer(updatedNumbers.map(({ number, status }) => ({ number, status })));
           setSelectedNumber([])
@@ -47,23 +46,30 @@ export default function Raffle() {
           if (newData && numberBuyerUser) {
             const arrayNumberBuyerUser = numberBuyerUser.length > 0 ? numberBuyerUser.map(e => e.number) : [];
             setUserRegistered({ ...newData[0], bay: arrayNumberBuyerUser });
+            setLoading(false);
           }
 
           if (resultResponse.length > 0) {
+            setLoading(false);
             global.alert(`Erro na compra ${resultResponse.length > 1 ? "dos numeros" : "do numero"} ${resultResponse.toString()}, tente ${resultResponse.length > 1 ? "compralos" : "compralo"} novamente ou escolha ${resultResponse.length > 1 ? "outros numeros." : "outro numero."}`);
           }
 
           if (resultResponse.length === 0) {
+            setLoading(false);
             global.alert(`Uhuuu, ${userRegistered.name} você comprou ${resultResponse.length > 1 ? "os numeros" : "o numero"} ${selectedNumber.toString()}`);
           }
 
         } else {
-          checkNumberBuyer.forEach( numberBuyer => addOrRemoveNumber({target: { innerText: numberBuyer}}));
+          checkNumberBuyer.forEach(numberBuyer => addOrRemoveNumber({ target: { innerText: numberBuyer } }));
           setStatusNumbersBuyer(numbers.map(({ number, status }) => ({ number, status })));
+          setLoading(false);
           global.alert(`${checkNumberBuyer.length > 1 ? 'Os numeros' : 'O numero'} ${checkNumberBuyer.toString()} já foram comprados, selecione outros!!!`);
         }
 
-      } else { global.alert('Tente novamente!!!') }
+      } else {
+        setLoading(false);
+        global.alert('Tente novamente!!!')
+      }
 
     } else {
       global.alert(`${!checkRegister ? 'cadastre-se' : ''}${!checkNumberSelected && !checkRegister ? ' e ' : ''}${!checkNumberSelected ? 'selecione algun numero' : ''}!!!`)
@@ -94,30 +100,34 @@ export default function Raffle() {
     }
     return arrayNumber;
   }
-
   return (
     <>
-      <hr />
-      { statusRegister && (
-      <div className={styles.numberBuyer}>
-        <div className={styles.numberBuyerSelected}>
-          <p>Selecionados: </p>
-          {selectedNumber.map((number) => (
-            <div
-              key={number}
-              onClick={addOrRemoveNumber}
-            >
-              {number}
+      {statusRegister && <hr />}
+      {statusRegister && (
+        <div className={styles.numberBuyer}>
+          <div className={styles.numberBuyerSelected}>
+            <p>Selecionados: </p>
+            {selectedNumber.map((number) => (
+              <div
+                key={number}
+                onClick={addOrRemoveNumber}
+              >
+                {number}
+              </div>
+            ))}
+          </div>
+          {loading ?
+            <div className={styles.test}>
+              <div className={styles.loader}></div>
             </div>
-          ))}
+            : <button
+              type='button'
+              onClick={bayNumbes}
+            >
+              Comprar
+            </button>
+          }
         </div>
-        <button
-          type='button'
-          onClick={bayNumbes}
-        >
-          Comprar
-        </button>
-      </div>
       )}
       <hr />
       <div className={styles.numberRaflle}>
