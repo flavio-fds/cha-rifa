@@ -1,0 +1,9 @@
+-- CreateTable
+CREATE TABLE "Number" (
+    "number" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "status" TEXT NOT NULL,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME NOT NULL,
+    "buyerId" TEXT NOT NULL,
+    CONSTRAINT "Number_buyerId_fkey" FOREIGN KEY ("buyerId") REFERENCES "User" ("numberPhone") ON DELETE RESTRICT ON UPDATE CASCADE
+);
