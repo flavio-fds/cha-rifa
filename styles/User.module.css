@@ -1,0 +1,161 @@
+.forms {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inputName {
+  padding: 3px;
+  font-size: 1rem;
+  border-width: 2px;
+  border-style: solid;
+  border-color: rgb(0, 108, 72);
+  border-radius: 8px;
+  text-align: center;
+  outline: transparent;
+  width: 100%;
+}
+
+.inputPhone {
+  margin-top: 2px;
+  padding: 3px;
+  font-size: 1rem;
+  border-width: 2px;
+  border-style: solid;
+  border-color: rgb(0, 108, 72);
+  color: rgb(0, 108, 72);
+  border-radius: 8px;
+  text-align: center;
+  outline: transparent;
+  width: 100%;
+}
+
+.inputButton {
+  color: rgb(0, 74, 49);
+  background-color: aquamarine;
+  margin-top: 2px;
+  padding: 3px;
+  font-size: 1rem;
+  border-width: 2px;
+  border-style: solid;
+  border-color: rgb(0, 108, 72);
+  border-radius: 8px;
+  text-align: center;
+  outline: transparent;
+  width: 100%;
+  font-weight: bold;
+}
+
+.confirmInput {
+  color: rgb(0, 74, 49);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.confirmInput p {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.confirmButton {
+  color: rgb(0, 74, 49);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.confirmButton button {
+  margin-top: 5px;
+  margin-left: 5px;
+  background-color: aquamarine;
+  color: rgb(0, 74, 49);
+  padding: 2px 8px;
+  font-size: 1rem;
+  border-width: 2px;
+  border-style: solid;
+  border-color: rgb(0, 108, 72);
+  border-radius: 8px;
+  text-align: center;
+  outline: transparent;
+  width: 100%;
+  font-weight: bold;
+}
+
+.registered {
+  color: rgb(0, 74, 49);
+  display: flex;
+  flex-direction: column;
+}
+
+.registered p{
+  font-weight: bold;
+  font-size: 1rem;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.registeredUserData {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.numberUserBuyer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.numberUserBuyer div {
+  background-color: aquamarine;
+  text-align: center;
+  margin: 2px;
+  width: 35px;
+  height: 22px;
+  border-style: solid;
+  border-color: rgb(0, 108, 72);
+  border-radius: 8px;
+  border-width: 2px;
+  padding-top: 0.2px;
+}
+
+.confirmUserRegistered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.confirmUserRegistered p {
+  color: rgb(0, 74, 49);
+  font-weight: bold;
+  font-size: 1rem;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.confirmUserRegistered div{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.confirmUserRegistered div button{
+  margin-top: 5px;
+  margin-left: 5px;
+  background-color: aquamarine;
+  color: rgb(0, 74, 49);
+  padding: 2px 8px;
+  font-size: 1rem;
+  border-width: 2px;
+  border-style: solid;
+  border-color: rgb(0, 108, 72);
+  border-radius: 8px;
+  text-align: center;
+  outline: transparent;
+  width: 100%;
+  font-weight: bold;
+}
+

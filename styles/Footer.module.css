@@ -1,0 +1,13 @@
+.footer {
+  display: flex;
+  color: rgb(0, 74, 49);
+  font-weight: bold;
+  font-size: 1.2rem;
+  justify-content: center;
+}
+
+.footer p {
+  color: rgb(0, 74, 49);
+  font-weight: bold;
+  font-size: 1.3rem;
+}
