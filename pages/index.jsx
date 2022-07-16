@@ -40,7 +40,10 @@ export default function Home({numbers}) {
 
 export const getServerSideProps = async () => {
   try {
-    const numbers = await prisma.number.findMany({})
+    const findResp = await prisma.number.findMany({})
+    // We needed to convert object -> json -> object due to a possible bug.
+    const numbers = JSON.parse(JSON.stringify(findResp))
+
     return {
       props: { numbers },
     }
