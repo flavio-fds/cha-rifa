@@ -27,7 +27,7 @@ export const postNumberBuyerUser = async (numbersBuyer) => {
 
 export const getStatusNumber = async () => {
   try {
-    const res = await fetch('http://localhost:3000/api/allNumbers');
+    const res = await fetch('/api/allNumbers');
     const numbers = await res.json();
     return numbers;
   } catch (error) {
