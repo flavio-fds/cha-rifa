@@ -12,15 +12,6 @@ datasource db {
   referentialIntegrity = "prisma"
 }
 
-// generator client {
-//   provider = "prisma-client-js"
-// }
-
-// datasource db {
-//   provider = "sqlite"
-//   url      = "file:./dev.db"
-// }
-
 model User {
   numberPhone String  @unique @id
   name  String?

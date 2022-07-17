@@ -33,14 +33,6 @@ export default function Home({numbers}) {
   )
 }
 
-// export const getServerSideProps = async () => {
-//   const res = await fetch('http://localhost:3000/api/allNumbers')
-//   const numbers = await res.json()
-//   return {
-//     props: { numbers },
-//   }
-// }
-
 export const getServerSideProps = async () => {
   try {
     const findResp = await prisma.number.findMany({})
