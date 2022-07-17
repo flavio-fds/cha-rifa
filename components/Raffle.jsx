@@ -124,7 +124,7 @@ export default function Raffle() {
               type='button'
               onClick={bayNumbes}
             >
-              Comprar
+              Reservar
             </button>
           }
         </div>
