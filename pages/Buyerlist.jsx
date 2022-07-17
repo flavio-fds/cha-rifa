@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { getAllUser } from "../service/DataUser";
 import { getStatusNumber } from "../service/NumberRaffle";
 
-export default function buyerlist() {
+export default function Buyerlist() {
 const [ allUser, setAllUser] = useState([]);
 const [ allNumber, setAllNumber] = useState([]);
 
@@ -18,7 +18,7 @@ const formatDateDB = () => {
   return allUser.map( user => {
     const filterNumberUser = allNumber.filter( number => number.buyerId === user.numberPhone )
     const filterNumberObject = filterNumberUser.map(({number}) => number)
-    return (<div><hr /><div key={user.numberPhone}>{`${user.name} - ${user.numberPhone} - ${filterNumberObject.toString()}`}</div></div>)
+    return (<div key={user.numberPhone}><hr /><div>{`${user.name} - ${user.numberPhone} - ${filterNumberObject.toString()}`}</div></div>)
   })
 }
 
