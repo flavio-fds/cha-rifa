@@ -13,12 +13,6 @@ export default function User() {
   const [loading, setLoading] = useState(false);
   const { statusRegister, setStatusRegister, userRegistered, setUserRegistered } = useContext(Context);
 
-  // function phoneMask(number) {
-  //   let r = number.replace(/\D/g, "");
-  //   r = r.replace(/^0/, "");
-  //   return r.replace(/^(\d\d)(\d{5})(\d{4}).*/, "($1) $2-$3");
-  // }
-
   const phoneMask = number => number.replace(/^(\d\d)(\d{5})(\d{4}).*/, "($1) $2-$3");
 
   const nameClean = (name) => name.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase();
@@ -50,7 +44,6 @@ export default function User() {
   };
 
   const editDataUser = () => {
-    // setUserInput({ name: '', numberPhone: '' });
     setConfirmRegistrationData(false);
     setInputRegister(true);
     setConfirmNameDataUser(false)
