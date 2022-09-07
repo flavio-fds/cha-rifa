@@ -26,7 +26,7 @@ export default function Buyerlist() {
   }
 
   const formatDateDB = () => {
-    const dataUserDetails = arrayObject().sort((a,b) => (a.status[0] > b.status[0]) ? 1 : ((b.status[0] > a.status[0]) ? -1 : 0));
+    const dataUserDetails = arrayObject().sort((a,b) => (a.status[0] > b.status[0]) ? -1 : ((b.status[0] > a.status[0]) ? 1 : 0));
 
     return dataUserDetails.map(user => (
       <div key={user.numberPhone}>
