@@ -14,6 +14,8 @@ export default function Buyerlist() {
     setAllUser(userDate);
   }
 
+  // Flavio
+
   const arrayObject = () => {
     return allUser.map(user => {
       const filterNumberUser = allNumber.filter(number => number.buyerId === user.numberPhone);
