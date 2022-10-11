@@ -25,6 +25,14 @@ img {
   height: auto;
 }
 
+.statusa {
+  background-color: greenyellow;
+}
+
+.statusp {
+  background-color: rgb(255, 106, 106);
+}
+
 
 /* html,
 body {
