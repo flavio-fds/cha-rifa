@@ -24,3 +24,15 @@ export const postDataUser = async (dataUser) => {
   }
 
 };
+
+export const getAllUser = async () => {
+  try {
+    const res = await fetch('/api/allUser');
+    const user = await res.json();
+    return user;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+
+}
